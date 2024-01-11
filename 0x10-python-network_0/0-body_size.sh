@@ -1,10 +1,3 @@
 #!/bin/bash
-
-# Check if a URL is provided
-if [ -z "$1" ]; then
-    echo "Usage: $0 <URL>"
-    exit 1
-fi
-
-# Use curl to send a request to the provided URL and display the size of the response body in bytes
-curl -sI "$1" | grep -i "Content-Length" | awk '{print $2}'
+# Get the byte size of the HTTP response header for a given URL.
+curl -s "$1" | wc -c
